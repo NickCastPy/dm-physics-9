@@ -1,15 +1,19 @@
 
 class Calculeaza_Perioada_Oscilatiilor:
-    # def __init__(self, lmbd, T):
-    #     self.lmbd = lmbd
-    #     self.T = T
-    def calculate(lmbd, T):
-        lmbd = int(lmbd)
+    
+    def calculate(lmbd, T, v):
+        lmbd_int = int(lmbd)
         c = 3 * 10**8
-        T = lmbd/c
-        if type(lmbd/c) == float:
+        if T == 'x':
+            T = lmbd_int/c
             value = str(T).split('e')
             nr2 = value[1].split('0')
-            final_result = f'v = {value[0]}^{nr2[0]}{nr2[1]}'
-            return final_result
+            final_result = f'T = {value[0]}^{nr2[0]}{nr2[1]} s'
+        elif v == 'x':
+            v =  c/lmbd_int
+            final_result = f'v = {v} Hz'
+        elif lmbd == 'x':
+            lmbd_int = c*T
+            final_result = f'lambda = {lmbd_int} m'
+        return final_result
 

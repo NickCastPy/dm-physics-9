@@ -6,6 +6,7 @@ from main import Calculeaza_Perioada_Oscilatiilor
 class DataForm(FlaskForm):
     lmbd = StringField('Introduceti Lambda (Lungimea de Unda)')
     T = StringField('Introduceti T (Perioada Oscilatiilor de Unda)')
+    v = StringField('Introduceti v (Frecventa Oscilatiilor de Unda)')
     submit = SubmitField('Calculeaza')
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ app.secret_key = "rtoypup"
 def main():
     form = DataForm()
     if request.method == 'POST':
-        result = Calculeaza_Perioada_Oscilatiilor.calculate(request.form['lmbd'], request.form['T'])
+        result = Calculeaza_Perioada_Oscilatiilor.calculate(request.form['lmbd'], request.form['T'], request.form['v'])
         return redirect(f'/{result}')
     return render_template('index.html', form=form)
 
