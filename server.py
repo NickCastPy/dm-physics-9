@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from main import Calculeaza_Perioada_Oscilatiilor
+from main import Calculator
 
 class DataForm(FlaskForm):
     lmbd = StringField('Introduceti Lambda (Lungimea de Unda)')
@@ -16,7 +16,7 @@ app.secret_key = "rtoypup"
 def main():
     form = DataForm()
     if request.method == 'POST':
-        result = Calculeaza_Perioada_Oscilatiilor.calculate(request.form['lmbd'], request.form['T'], request.form['v'])
+        result = Calculator.calculeaza_perioada_oscilatiilor(request.form['lmbd'], request.form['T'], request.form['v'])
         return redirect(f'/{result}')
     return render_template('index.html', form=form)
 

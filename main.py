@@ -1,7 +1,6 @@
-
-class Calculeaza_Perioada_Oscilatiilor:
+class Calculator:
     
-    def calculate(lmbd, T, v):
+    def calculeaza_perioada_oscilatiilor(lmbd, T, v):
         lmbd_int = int(lmbd)
         c = 3 * 10**8
         if T == 'x':
